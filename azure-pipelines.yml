@@ -7,16 +7,9 @@ pool:
 steps:
 - checkout: self
   persistCredentials: true
-- task: oc-setup@3
+- task: oc-cmd@4
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'My Openshift'
-    version: '3.11.0'
-- script: |
-    oc project testlu
-    cd $AGENT_TOOLSDIRECTORY
-    ls
-    cd oc 
-    ls
-    cd 3.11.0/x64
-    ls
+    openshiftService: 'ocp'
+    version: '4.11'
+    cmd: 'oc get pods'
